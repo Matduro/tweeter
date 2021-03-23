@@ -1,13 +1,29 @@
 #brand {
-  /* display: flex;
-  align-items: baseline; */
+  display: flex;
   font-family: Bungee, sans-serif;
-  color: white;
+  color: #FFFFFF;
+  font-size: 1.75em;
+  line-height: 2em;
 }
 
 .navigationBar {
+  
+  background-color: #4056A1;
+  height: 120px;
+  flex-direction: row;
+  padding: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
 
-  box-sizing: border-box;
-  background-color: rgb(79, 79, 195);
-  padding: 1em;
+
+.write {
+  font-family: Source Sans Pro  Bold, sans-serif ;
+  color: #FFFFFF;
+}
+.newTweet {
+  font-family: Source Sans Pro, sans-serif ;
+  color: #FFFFFF;
+  padding-left: 2px;
 }
