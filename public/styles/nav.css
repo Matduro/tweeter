@@ -39,12 +39,3 @@
   gap: 3px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  /* background: linear-gradient(45deg, #f06, yellow); this is for a gradient backgroung. Leave note here for future reference */
-  margin: 0 auto;
-}
