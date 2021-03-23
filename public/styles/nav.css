@@ -45,7 +45,6 @@
   justify-content: center;
   align-items: center;
   width: 90%;
-  background-color: blanchedalmond;
-  text-align: center;
+  /* background: linear-gradient(45deg, #f06, yellow); this is for a gradient backgroung. Leave note here for future reference */
   margin: 0 auto;
 }

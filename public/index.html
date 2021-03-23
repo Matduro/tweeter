@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -44,11 +45,16 @@
       </div>
     </header>
     <main class="container">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae, distinctio neque. Incidunt, quibusdam magni! In aut numquam veniam libero, deserunt hic velit voluptatibus nulla minus, quod maxime vitae error quae.</p>
-      <br>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda minus nisi quas tempora repellat vitae enim odio nostrum cumque delectus unde et cupiditate modi possimus itaque, pariatur, molestias quo rem?</p>
-      <br>
-      <p>Hodor. Hodor hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor. Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor; hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...</p>
+      <section class="new-tweet">
+        <form action="/tweets" method="POST">
+          <label for="tweet-text">What are you humming about?</label>
+          <textarea class="text-area" name="text" id="tweet-text"></textarea>
+          <div class="button-and-count">
+            <button class="send-tweet" type="submit">Tweet</button>
+            <output class="character-count "name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
     </main>
   </body>
 </html>
