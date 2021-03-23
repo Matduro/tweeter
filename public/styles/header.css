@@ -7,7 +7,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  /*  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
   background-color: #cf7c00;
+  */
+  background: rgb(64,86,161);
+  background: linear-gradient(90deg, rgba(64,86,161,1) 0%, rgba(81,70,252,0.9084821428571429) 100%);  
 }
 
