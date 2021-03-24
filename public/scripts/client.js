@@ -8,20 +8,7 @@
 
 $(document).ready(function() {
 
-  const $submitTweet = $('form');
-  $submitTweet.submit(function(event) {
-    event.preventDefault();
-    console.log('Post Submited, performing ajax call...');
-    console.log($(this).serialize());
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: $(this).serialize()})
-      .then(function() {
-        console.log('Success: ');
-        // $submitTweet.replaceWith();
-      });
-  });
+
 
   
   const createTweetElement = function(tweetsObj) {
@@ -67,5 +54,18 @@ $(document).ready(function() {
   };
 
   loadTweets();
+
+  const $submitTweet = $('form');
+  $submitTweet.submit(function(event) {
+    event.preventDefault();
+    const $newTweet = $(this).serialize();
+    const $tweetLen = $('textarea').val().length;
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: $newTweet
+    })
+      .then(loadTweets);
+  });
   
 });
