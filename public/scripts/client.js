@@ -31,35 +31,35 @@ const tweetData = [
   }
 ];
 
-// $(document).ready(function() {
+$(document).ready(function() {
 
-const createTweetElement = function(tweetsObj) {
-  let $tweet = `
+  const createTweetElement = function(tweetsObj) {
+    let $tweet = `
   <section class="tweets-container">
-    <header><img src="/images/profile-hex.png"></header>
+    <header><img src="${tweetsObj.user.avatars}">${tweetsObj.content.handle}</header>
     <article>
-      <textarea name="text" >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia doloribus, ipsa tempora dolor consequuntur nisi voluptatibus aut provident et ducimus mollitia autem modi est repellendus quos repellat earum minus natus.</textarea>
+      <textarea name="text" >${tweetsObj.content.text}</textarea>
     </article>
-    <footer>10 Days Ago</footer>
+    <footer>"created at "${tweetsObj.created_at}</footer>
   </section>`;
-  return $tweet;
-};
+    return $tweet;
+  };
 
 
-const renderTweets = function(tweetsArr) {
+  const renderTweets = function(tweetsArr) {
   // leverage createTweetElement function for each tweet
   // take an array of tweet objects
   // loops and appends each one to the #tweets-container
-  for (let tweet of tweetsArr) {
+    for (let tweet of tweetsArr) {
     // convert data to HTML elements
-    const $tweet = createTweetElement(tweet);
-    // Add each HTML elements to the container
-    console.log($tweet); // to see what it looks like
-    $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-  }
+      const $tweet = createTweetElement(tweet);
+      // Add each HTML elements to the container
+      console.log($tweet); // to see what it looks like
+      $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+    }
 
-};
+  };
 
-renderTweets(tweetData);
+  renderTweets(tweetData);
 
-// });
+});
