@@ -47,3 +47,8 @@ textarea {
 .tweet-container:hover {
   background-color: gold;
 }
+
+.tweet-container img {
+  width: 100px;
+  height: auto;
+}
