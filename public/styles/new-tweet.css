@@ -49,6 +49,14 @@ textarea {
 }
 
 .tweets-container img {
-  width: 100px;
+  width: 75px;
+  height: auto;
+}
+
+.tweets-container header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75px;
   height: auto;
 }

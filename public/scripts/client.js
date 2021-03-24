@@ -36,7 +36,11 @@ $(document).ready(function() {
   const createTweetElement = function(tweetsObj) {
     let $tweet = `
   <section class="tweets-container">
-    <header><img src="${tweetsObj.user.avatars}">${tweetsObj.content.handle}</header>
+    <header><img src="${tweetsObj.user.avatars}">
+     <div>
+      ${tweetsObj.user.handle}
+     </div>
+    </header>
     <article>
       <textarea name="text" >${tweetsObj.content.text}</textarea>
     </article>
