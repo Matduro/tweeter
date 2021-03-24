@@ -32,6 +32,21 @@ const tweetData = [
 ];
 
 $(document).ready(function() {
+  const $submitTweet = $('form');
+  $submitTweet.submit(function(event) {
+    event.preventDefault();
+    console.log('Post Submited, performing ajax call...');
+    console.log($(this).serialize());
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: $(this).serialize()})
+      .then(function() {
+        console.log('Success: ');
+        // $submitTweet.replaceWith();
+      });
+  });
+
 
   const createTweetElement = function(tweetsObj) {
     let $tweet = `
