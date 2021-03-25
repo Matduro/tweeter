@@ -60,3 +60,10 @@ textarea {
   width: 75px;
   height: auto;
 }
+
+.error-message-high {
+  display: none;
+}
+.error-message-zero {
+  display: none;
+}

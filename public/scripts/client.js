@@ -25,7 +25,15 @@ $(document).ready(function() {
     <article>
     <div>${escape(tweetsObj.content.text)}</div>
     </article>
-    <footer>"created at "${tweetsObj.created_at}</footer>
+    
+    <footer>
+      <time>"created at "${tweetsObj.created_at}</time>
+        <aside>
+        <a>🏴</a>
+        <a>➡</a>
+        <a>❤</a>
+      </aside>
+    </footer>
     </article>
     <br>
     `;
@@ -41,7 +49,7 @@ $(document).ready(function() {
       // convert data to HTML elements
       const $tweet = createTweetElement(tweet);
       // Add each HTML elements to the container
-      console.log($tweet); // to see what it looks like
+      // to see what it looks like
   
       $('#tweets-container').prepend($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
     }
@@ -69,17 +77,17 @@ $(document).ready(function() {
     const $tweetLen = $('textarea').val().length;
 
     if ($tweetLen > 140) {
-      alert("Your tweet is too long");
+      $(".error-message-high").slideDown(1000).delay(2000).fadeOut(1000);
     } else if ($tweetLen === 0) {
-      alert("You're not tweeting anything");
-    } else {
-      $.ajax({
-        type: "POST",
-        url: "/tweets",
-        data: $newTweet
-      })
-        .then(loadTweets);
+      $(".error-message-zero").slideDown(1000).delay(2000).fadeOut(1000);
     }
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: $newTweet
+    })
+      .then(loadTweets);
+
   });
 
 
