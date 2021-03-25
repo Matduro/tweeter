@@ -8,21 +8,27 @@
 
 $(document).ready(function() {
 
-
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
   
   const createTweetElement = function(tweetsObj) {
     let $tweet = `
     <article class="tweet-box">
     <header><img src="${tweetsObj.user.avatars}">
     <div>
-    ${tweetsObj.user.handle}
+    ${escape(tweetsObj.user.handle)}
     </div>
     </header>
     <article>
-    <textarea name="text" >${tweetsObj.content.text}</textarea>
+    <div>${escape(tweetsObj.content.text)}</div>
     </article>
     <footer>"created at "${tweetsObj.created_at}</footer>
-    </article>`;
+    </article>
+    <br>
+    `;
     return $tweet;
   };
   
@@ -36,6 +42,7 @@ $(document).ready(function() {
       const $tweet = createTweetElement(tweet);
       // Add each HTML elements to the container
       console.log($tweet); // to see what it looks like
+  
       $('#tweets-container').prepend($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
     }
     
@@ -53,6 +60,7 @@ $(document).ready(function() {
   };
 
   loadTweets();
+
 
   const $submitTweet = $('form');
   $submitTweet.submit(function(event) {
