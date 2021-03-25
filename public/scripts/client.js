@@ -9,11 +9,10 @@
 $(document).ready(function() {
 
 
-
   
   const createTweetElement = function(tweetsObj) {
     let $tweet = `
-    <section class="tweets-container">
+    <article class="tweet-box">
     <header><img src="${tweetsObj.user.avatars}">
     <div>
     ${tweetsObj.user.handle}
@@ -23,7 +22,7 @@ $(document).ready(function() {
     <textarea name="text" >${tweetsObj.content.text}</textarea>
     </article>
     <footer>"created at "${tweetsObj.created_at}</footer>
-    </section>`;
+    </article>`;
     return $tweet;
   };
   
@@ -60,12 +59,20 @@ $(document).ready(function() {
     event.preventDefault();
     const $newTweet = $(this).serialize();
     const $tweetLen = $('textarea').val().length;
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: $newTweet
-    })
-      .then(loadTweets);
+
+    if ($tweetLen > 140) {
+      alert("Your tweet is too long");
+    } else if ($tweetLen === 0) {
+      alert("You're not tweeting anything");
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: $newTweet
+      })
+        .then(loadTweets);
+    }
   });
-  
+
+
 });

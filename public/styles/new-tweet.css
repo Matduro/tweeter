@@ -37,23 +37,23 @@ textarea {
   background-color: #4056A1;
 }
 
-.tweets-container {
+.tweet-box {
   background-color: powderblue;
   transition: background-color .5s;
   border: 5px solid rgb(68, 66, 66);
   padding: 1em;
 }
 
-.tweets-container:hover {
+.tweet-box:hover {
   background-color: gold;
 }
 
-.tweets-container img {
+.tweet-box img {
   width: 75px;
   height: auto;
 }
 
-.tweets-container header {
+.tweet-box header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
