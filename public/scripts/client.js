@@ -17,10 +17,16 @@ $(document).ready(function() {
   const createTweetElement = function(tweetsObj) {
     let $tweet = `
     <article class="tweet-box">
-    <header><img src="${tweetsObj.user.avatars}">
-    <div>
-    ${escape(tweetsObj.user.handle)}
+    <header class="tweet-head">
+    <div class="avatar-user-name">
+      <img src="${tweetsObj.user.avatars}">
+        <div class="user-name">
+        ${escape(tweetsObj.user.name)}
+        </div>
     </div>
+      <div class="handler">
+      ${escape(tweetsObj.user.handle)}
+      </div>
     </header>
     <article>
     <div>${escape(tweetsObj.content.text)}</div>
@@ -29,7 +35,7 @@ $(document).ready(function() {
     <footer>
       <time>"created at "${tweetsObj.created_at}</time>
         <aside>
-        <a>🏴</a>
+        <a>🚩</a>
         <a>➡</a>
         <a>❤</a>
       </aside>
@@ -57,11 +63,10 @@ $(document).ready(function() {
   };
   
   const loadTweets = function() {
-    return $
-      .ajax({
-        url: '/tweets',
-        method: "GET",
-      })
+    $.ajax({
+      url: '/tweets',
+      method: "GET",
+    })
       .then((tweets) => {
         renderTweets(tweets);
       });
@@ -86,7 +91,7 @@ $(document).ready(function() {
       url: "/tweets",
       data: $newTweet
     })
-      .then(loadTweets);
+      .then(loadTweets).then(() => this.reset());
 
   });
 

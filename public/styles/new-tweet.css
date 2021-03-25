@@ -40,12 +40,14 @@ textarea {
 .tweet-box {
   background-color: powderblue;
   transition: background-color .5s;
+  transition: box-shadow .5s;
   border: 5px solid rgb(68, 66, 66);
   padding: 1em;
 }
 
 .tweet-box:hover {
-  background-color: gold;
+  background-color:	#FFFF99;
+  box-shadow: 6px 8px #888888;
 }
 
 .tweet-box img {
@@ -53,17 +55,31 @@ textarea {
   height: auto;
 }
 
-.tweet-box header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 75px;
-  height: auto;
-}
 
 .error-message-high {
   display: none;
 }
 .error-message-zero {
   display: none;
+}
+
+aside {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.tweet-head {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.avatar-user-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.handler {
+  opacity: 0.5;
 }
