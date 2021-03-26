@@ -29,9 +29,11 @@ The compressed screen view, for tablets and mobile phone.
 
 ## Dependencies
 
-- Express
+- Express 4.13.4 or above
 - Node 5.10.x or above
-
+- BodyParser 1.15.2 or above
+- Chance 1.0.2 or above
+- md5 2.1.0 or above
 
 ## Known Bugs
 
