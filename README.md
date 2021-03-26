@@ -6,13 +6,13 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final App
 
-[Gif demonstratiing some of the features](https://github.com/Matduro/tweeter/blob/master/demo/tweeterAppGif.gif)
+![Gif demonstratiing some of the features](https://github.com/Matduro/tweeter/blob/master/demo/tweeterAppGif.gif)
 
-[main page](https://github.com/Matduro/tweeter/blob/master/demo/Screen%20Shot%202021-03-25%20at%207.55.29%20PM.png)
+![main page](https://github.com/Matduro/tweeter/blob/master/demo/Screen%20Shot%202021-03-25%20at%207.55.29%20PM.png)
 
-[compressed view](https://github.com/Matduro/tweeter/blob/master/demo/Screen%20Shot%202021-03-25%20at%207.57.02%20PM.png)
+![compressed view](https://github.com/Matduro/tweeter/blob/master/demo/Screen%20Shot%202021-03-25%20at%207.57.02%20PM.png)
 
-[tweet highlight on over](https://github.com/Matduro/tweeter/blob/master/demo/Screen%20Shot%202021-03-25%20at%207.56.11%20PM.png)
+![tweet highlight on over](https://github.com/Matduro/tweeter/blob/master/demo/Screen%20Shot%202021-03-25%20at%207.56.11%20PM.png)
 
 ## Getting Started
 
