@@ -4,7 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
+const timeSinceTweet = (unix) => {
+  return moment(unix).fromNow();
+};
 
 $(document).ready(function() {
 
@@ -15,6 +17,8 @@ $(document).ready(function() {
   };
   
   const createTweetElement = function(tweetsObj) {
+  
+
     let $tweet = `
     <article class="tweet-box">
     <header class="tweet-head">
@@ -28,16 +32,16 @@ $(document).ready(function() {
       ${escape(tweetsObj.user.handle)}
       </div>
     </header>
-    <article>
+    <article class="tweet-content">
     <div>${escape(tweetsObj.content.text)}</div>
     </article>
     
-    <footer>
-      <time>"created at "${tweetsObj.created_at}</time>
+    <footer class="footer">
+      <time>${timeSinceTweet(tweetsObj.created_at)}</time>
         <aside>
-        <a>🚩</a>
-        <a>➡</a>
-        <a>❤</a>
+        <a><i class="far fa-flag"></i></a>
+        <a><i class="fas fa-retweet"></i></a>
+        <a><i class="far fa-heart"></i></a>
       </aside>
     </footer>
     </article>
@@ -85,14 +89,13 @@ $(document).ready(function() {
       $(".error-message-high").slideDown(1000).delay(2000).fadeOut(1000);
     } else if ($tweetLen === 0) {
       $(".error-message-zero").slideDown(1000).delay(2000).fadeOut(1000);
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: $newTweet
+      }).then(loadTweets).then(() => this.reset()).then(('.character-count').text(140));
     }
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: $newTweet
-    })
-      .then(loadTweets).then(() => this.reset());
-
   });
 
 
