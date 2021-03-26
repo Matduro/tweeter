@@ -27,12 +27,12 @@
     <!-- Top nav bar (fixed) -->
     <nav class="navigationBar">
       <span id="brand">tweeter</span>
-      <div class="newTweetButton">
+      <div class="new-tweet-button">
         <div>
           <span class="write">Compose</span>
-          <span class="newTweet">a new tweet</span>
+          <span class="new-tweet">a new tweet</span>
         </div>
-        <i class="fas fa-angle-double-down downArrow"></i> <!-- Have not gotten this arrow to show, yet -->
+        <i class="fas fa-angle-double-down down-arrow"></i> <!-- Have not gotten this arrow to show, yet -->
     </div>
     </nav>
 
@@ -46,10 +46,9 @@
       </div>
     </header>
     <main class="container">
-      <section>
-        <div class="error-message-high">&#9888 INPUT EXCEEDS CHARACTER LIMIT &#9888</div>
-        <div class="error-message-zero">&#9888 YOU HAVE NO INPUT &#9888</div>
+      <section id="toggle-tweet">
         <form action="/tweets" method="POST">
+          <div class="error-message"></div>
           <label class="humming-about"for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="button-and-count">

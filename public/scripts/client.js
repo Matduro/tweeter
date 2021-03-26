@@ -1,94 +1,88 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
 const timeSinceTweet = (unix) => {
   return moment(unix).fromNow();
 };
 
+
+// prevents malicious <scrip> to be inputed by user.
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+
+// creates HTML template for new tweets
+const createTweetElement = function(tweetsObj) {
+  let $tweet = `
+  <article class="tweet-box">
+  <header class="tweet-head">
+  <div class="avatar-user-name">
+    <img src="${tweetsObj.user.avatars}">
+      <div class="user-name">
+      ${escape(tweetsObj.user.name)}
+      </div>
+  </div>
+    <div class="handler">
+    ${escape(tweetsObj.user.handle)}
+    </div>
+  </header>
+  <article class="tweet-content">
+  <div>${escape(tweetsObj.content.text)}</div>
+  </article>
+  <footer class="footer">
+    <time>${timeSinceTweet(tweetsObj.created_at)}</time>
+      <aside>
+      <a><i class="far fa-flag"></i></a>
+      <a><i class="fas fa-retweet"></i></a>
+      <a><i class="far fa-heart"></i></a>
+    </aside>
+  </footer>
+  </article>
+  <br>
+  `;
+  return $tweet;
+};
+
+// renders the tweets in the database
+const renderTweets = function(tweetsArr) {
+  for (let tweet of tweetsArr) {
+    const $tweet = createTweetElement(tweet);
+    $('#tweets-container').prepend($tweet);
+  }
+};
+
+// loads the tweets on to the main page
+const loadTweets = function() {
+  $.ajax({
+    url: '/tweets',
+    method: "GET",
+  })
+    .then((tweets) => {
+      renderTweets(tweets);
+    });
+};
+
+// Load when document is ready
 $(document).ready(function() {
 
-  const escape =  function(str) {
-    let div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
   
-  const createTweetElement = function(tweetsObj) {
-  
-
-    let $tweet = `
-    <article class="tweet-box">
-    <header class="tweet-head">
-    <div class="avatar-user-name">
-      <img src="${tweetsObj.user.avatars}">
-        <div class="user-name">
-        ${escape(tweetsObj.user.name)}
-        </div>
-    </div>
-      <div class="handler">
-      ${escape(tweetsObj.user.handle)}
-      </div>
-    </header>
-    <article class="tweet-content">
-    <div>${escape(tweetsObj.content.text)}</div>
-    </article>
-    
-    <footer class="footer">
-      <time>${timeSinceTweet(tweetsObj.created_at)}</time>
-        <aside>
-        <a><i class="far fa-flag"></i></a>
-        <a><i class="fas fa-retweet"></i></a>
-        <a><i class="far fa-heart"></i></a>
-      </aside>
-    </footer>
-    </article>
-    <br>
-    `;
-    return $tweet;
-  };
-  
-  
-  const renderTweets = function(tweetsArr) {
-    // leverage createTweetElement function for each tweet
-    // take an array of tweet objects
-    // loops and appends each one to the #tweets-container
-    for (let tweet of tweetsArr) {
-      // convert data to HTML elements
-      const $tweet = createTweetElement(tweet);
-      // Add each HTML elements to the container
-      // to see what it looks like
-  
-      $('#tweets-container').prepend($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-    }
-    
-  };
-  
-  const loadTweets = function() {
-    $.ajax({
-      url: '/tweets',
-      method: "GET",
-    })
-      .then((tweets) => {
-        renderTweets(tweets);
-      });
-  };
-
+  // load the database tweets on page load
   loadTweets();
-
-
+  
+  
+  // Submits new tweets if input is withing the character requirements, else it drops an error message.
   const $submitTweet = $('form');
   $submitTweet.submit(function(event) {
     event.preventDefault();
     const $newTweet = $(this).serialize();
     const $tweetLen = $('textarea').val().length;
-
+    
     if ($tweetLen > 140) {
-      $(".error-message-high").slideDown(1000).delay(2000).fadeOut(1000);
+      
+      $(".error-message").text("Hey, you're tweeting too much!").slideDown(1000).delay(2000).fadeOut(1000);
     } else if ($tweetLen === 0) {
-      $(".error-message-zero").slideDown(1000).delay(2000).fadeOut(1000);
+      $(".error-message").text("Hey, you're not tweeting anything!").slideDown(1000).delay(2000).fadeOut(1000);
     } else {
       $.ajax({
         type: "POST",
@@ -98,5 +92,10 @@ $(document).ready(function() {
     }
   });
 
-
+  ///////////
+  /// STRETCH: toggles the new tweet section.
+  //////////
+  $('.new-tweet-button').on("click",function() {
+    $("#toggle-tweet").slideToggle();
+  });
 });
